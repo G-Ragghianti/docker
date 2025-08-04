@@ -9,6 +9,3 @@ spack:
   view: true
   concretizer:
     unify: true
-  packages:
-    all:
-      require: "target=x86_64"
