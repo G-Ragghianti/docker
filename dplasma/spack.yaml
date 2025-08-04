@@ -1,0 +1,14 @@
+spack:
+  specs:
+  - bison
+  - cmake
+  - flex
+  - ninja
+  - openmpi~rsh
+  - openblas
+  view: true
+  concretizer:
+    unify: true
+  packages:
+    all:
+      require: "target=x86_64"

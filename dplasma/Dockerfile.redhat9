@@ -1,0 +1,30 @@
+# Reproduce errors in dplasma testers using parsec backend
+
+FROM rockylinux:9
+
+RUN dnf -y group install development
+RUN dnf -y install gcc-gfortran
+
+WORKDIR /tmp/
+COPY spack.yaml /tmp/
+RUN git clone https://github.com/spack/spack && \
+#    cd spack && git checkout ee27dc5d45ba3b83f0c61ed2e60361089e311928 && \
+    source spack/share/spack/setup-env.sh && \
+    spack env create myenv spack.yaml && \
+    spack env activate myenv && \
+    spack install -p8
+
+USER nobody
+
+# Install parsec
+COPY parsec.sh parsec.patch /tmp/
+RUN source spack/share/spack/setup-env.sh && \
+    spack env activate myenv && \
+    ./parsec.sh
+
+# Install dplasma
+COPY dplasma.sh /tmp/
+RUN source spack/share/spack/setup-env.sh && \
+    spack env activate myenv && \
+    ./dplasma.sh
+
