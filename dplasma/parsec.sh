@@ -13,7 +13,7 @@ cmake   -G Ninja \
         -DBUILD_SHARED_LIBS=ON \
         -DPARSEC_PROF_TRACE=ON \
         -DMPIEXEC_PREFLAGS='--bind-to;none;--oversubscribe' \
-        -DCMAKE_INSTALL_PREFIX=/tmp/parsec \
+        -DCMAKE_INSTALL_PREFIX=/tmp/parsec/install \
         -DPARSEC_GPU_WITH_CUDA=OFF \
         -DPARSEC_GPU_WITH_HIP=OFF \
 	..

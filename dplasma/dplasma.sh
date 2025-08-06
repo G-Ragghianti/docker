@@ -15,7 +15,7 @@ CC=gcc CXX=g++ FC=gfortran cmake \
         -DPARSEC_HAVE_DEV_RECURSIVE_SUPPORT=OFF \
         -DDPLASMA_GPU_WITH_CUDA=OFF \
         -DDPLASMA_GPU_WITH_HIP=OFF \
-	-DPaRSEC_ROOT=/tmp/parsec \
+	-DPaRSEC_ROOT=/tmp/parsec/install \
 	..
 cmake --build .
 ctest --output-on-failure
