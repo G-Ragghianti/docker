@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+set -x
+
 git clone https://github.com/ICLDisco/dplasma
 cd dplasma
 rm -rf parsec
@@ -7,7 +9,7 @@ mkdir build
 cd build
 CC=gcc CXX=g++ FC=gfortran cmake \
 	-G Ninja \
-        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
         -DBUILD_SHARED_LIBS=ON \
         -DMPIEXEC_PREFLAGS='--bind-to;none;--oversubscribe' \
         -DCMAKE_INSTALL_PREFIX=$PWD/dplasma/install \
